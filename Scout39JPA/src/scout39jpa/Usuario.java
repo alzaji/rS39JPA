@@ -46,16 +46,16 @@ public class Usuario implements Serializable {
     }
     @Column(unique = true, nullable = false, length = 50)
     private String alias;
-    @Column(nullable=false,length=255)
+    @Column(nullable = false, length = 255)
     private String nombre;
-    @Column(nullable=false,length=255)
+    @Column(nullable = false, length = 255)
     private String apellidos;
-    @Column(nullable=false,length=255)
+    @Column(nullable = false, length = 255)
     private String digest;
-    @Column(nullable=false,length=128)
+    @Column(nullable = false, length = 128)
     private String email;
     @Temporal(TemporalType.DATE)
-    @Column(nullable=false)
+    @Column(nullable = false)
     private Date fecha_alta;
     @Temporal(TemporalType.DATE)
     private Date fecha_baja;
@@ -63,6 +63,46 @@ public class Usuario implements Serializable {
     private List<Roles> roles;
     @OneToMany(mappedBy = "usuario")
     private List<Cuotas> cuotas;
+    @OneToMany(mappedBy = "usuario")
+    private List<Archivo> archivo;
+    @OneToMany(mappedBy="usuario")
+    private List<Comentarios> comentario;
+    @OneToMany(mappedBy="usuario")
+    private List<Progresion> progresion;
+    @OneToMany(mappedBy="usuario")
+    private List<Grupo> grupo;
+
+    public List<Archivo> getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(List<Archivo> archivo) {
+        this.archivo = archivo;
+    }
+
+    public List<Comentarios> getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(List<Comentarios> comentario) {
+        this.comentario = comentario;
+    }
+
+    public List<Progresion> getProgresion() {
+        return progresion;
+    }
+
+    public void setProgresion(List<Progresion> progresion) {
+        this.progresion = progresion;
+    }
+
+    public List<Grupo> getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(List<Grupo> grupo) {
+        this.grupo = grupo;
+    }
 
     public String getAlias() {
         return alias;
