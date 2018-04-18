@@ -4,6 +4,8 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>scout39jpa.Comentarios</class>
     <class>scout39jpa.Eventos</class>
+    <class>scout39jpa.Usuario</class>
+    <class>scout39jpa.Progresion</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/Scout39"/>
       <property name="javax.persistence.jdbc.user" value="Scout39"/>
