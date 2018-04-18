@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package scout39jpa;
 
 import java.io.Serializable;
@@ -13,14 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- *
- * @author hidden-process
- */
 @Entity
 public class Usuario implements Serializable {
 
@@ -28,29 +20,13 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    public List<Roles> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Roles> roles) {
-        this.roles = roles;
-    }
-
-    public List<Cuotas> getCuotas() {
-        return cuotas;
-    }
-
-    public void setCuotas(List<Cuotas> cuotas) {
-        this.cuotas = cuotas;
-    }
     @Column(unique = true, nullable = false, length = 50)
     private String alias;
     @Column(nullable = false, length = 255)
     private String nombre;
     @Column(nullable = false, length = 255)
     private String apellidos;
-    @Column(nullable = false, length = 255)
+    @Column(nullable = false, length = 64)
     private String digest;
     @Column(nullable = false, length = 128)
     private String email;
@@ -59,50 +35,18 @@ public class Usuario implements Serializable {
     private Date fecha_alta;
     @Temporal(TemporalType.DATE)
     private Date fecha_baja;
-    @OneToMany(mappedBy = "usuario")
-    private List<Roles> roles;
-    @OneToMany(mappedBy = "usuario")
-    private List<Cuotas> cuotas;
-    @OneToMany(mappedBy = "usuario")
+    @ManyToOne
+    private Roles roles;
+    @OneToMany(mappedBy="usuario")
+    private List<Comentarios> comentarios;
+    @OneToMany
+    private List<Cuotas> cuota;
+    @OneToMany
     private List<Archivo> archivo;
-    @OneToMany(mappedBy="usuario")
-    private List<Comentarios> comentario;
-    @OneToMany(mappedBy="usuario")
+    @OneToMany(mappedBy="usuarioP")
     private List<Progresion> progresion;
-    @OneToMany(mappedBy="usuario")
-    private List<Grupo> grupo;
-
-    public List<Archivo> getArchivo() {
-        return archivo;
-    }
-
-    public void setArchivo(List<Archivo> archivo) {
-        this.archivo = archivo;
-    }
-
-    public List<Comentarios> getComentario() {
-        return comentario;
-    }
-
-    public void setComentario(List<Comentarios> comentario) {
-        this.comentario = comentario;
-    }
-
-    public List<Progresion> getProgresion() {
-        return progresion;
-    }
-
-    public void setProgresion(List<Progresion> progresion) {
-        this.progresion = progresion;
-    }
-
-    public List<Grupo> getGrupo() {
-        return grupo;
-    }
-
-    public void setGrupo(List<Grupo> grupo) {
-        this.grupo = grupo;
-    }
+    @OneToMany(mappedBy="Usuario_Grupo")
+    private List<AccesoGrupo> Acceso_Grupo;
 
     public String getAlias() {
         return alias;
@@ -160,6 +104,55 @@ public class Usuario implements Serializable {
         this.fecha_baja = fecha_baja;
     }
 
+    public Roles getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Roles roles) {
+        this.roles = roles;
+    }
+
+    public List<Comentarios> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentarios> comentarios) {
+        this.comentarios = comentarios;
+    }
+
+    public List<Cuotas> getCuota() {
+        return cuota;
+    }
+
+    public void setCuota(List<Cuotas> cuota) {
+        this.cuota = cuota;
+    }
+
+    public List<Archivo> getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(List<Archivo> archivo) {
+        this.archivo = archivo;
+    }
+
+    public List<Progresion> getProgresion() {
+        return progresion;
+    }
+
+    public void setProgresion(List<Progresion> progresion) {
+        this.progresion = progresion;
+    }
+
+    public List<AccesoGrupo> getAcceso_Grupo() {
+        return Acceso_Grupo;
+    }
+
+    public void setAcceso_Grupo(List<AccesoGrupo> Acceso_Grupo) {
+        this.Acceso_Grupo = Acceso_Grupo;
+    }
+    
+    
     public Long getId() {
         return id;
     }
@@ -192,5 +185,5 @@ public class Usuario implements Serializable {
     public String toString() {
         return "scout39jpa.Usuario[ id=" + id + " ]";
     }
-
+    
 }
