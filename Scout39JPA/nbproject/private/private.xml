@@ -5,7 +5,9 @@
         <group>
             <file>file:/D:/proyectosjee/Scout39JPA/src/scout39jpa/Privilegios.java</file>
             <file>file:/D:/proyectosjee/Scout39JPA/src/scout39jpa/Roles.java</file>
+            <file>file:/D:/proyectosjee/Scout39JPA/src/scout39jpa/Objeto.java</file>
             <file>file:/D:/proyectosjee/Scout39JPA/src/META-INF/persistence.xml</file>
+            <file>file:/D:/proyectosjee/Scout39JPA/src/scout39jpa/Usuario.java</file>
         </group>
     </open-files>
 </project-private>

@@ -6,66 +6,22 @@
 package scout39jpa;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Set;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 /**
  *
  * @author alzaj
  */
 @Entity
-public class Roles implements Serializable {
+public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(unique = true, length = 100, nullable = false)
-    private String nombrerol;
-    @OneToMany
-    private List<Usuario> usuarios;
-    @OneToMany(mappedBy = "rol")
-    private List<Privilegios> privilegios;
-
-    public List<Usuario> getUsuarios() {
-        return usuarios;
-    }
-
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
-
-    public List<Privilegios> getPrivilegios() {
-        return privilegios;
-    }
-
-    public void setPrivilegios(List<Privilegios> privilegios) {
-        this.privilegios = privilegios;
-    }
-
-   
-    public Long getIdrol() {
-        return id;
-    }
-
-    public void setIdrol(Long idrol) {
-        this.id = idrol;
-    }
-
-    public String getNombrerol() {
-        return nombrerol;
-    }
-
-    public void setNombrerol(String nombrerol) {
-        this.nombrerol = nombrerol;
-    }
 
     public Long getId() {
         return id;
@@ -85,10 +41,10 @@ public class Roles implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Roles)) {
+        if (!(object instanceof Usuario)) {
             return false;
         }
-        Roles other = (Roles) object;
+        Usuario other = (Usuario) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -97,7 +53,7 @@ public class Roles implements Serializable {
 
     @Override
     public String toString() {
-        return "scout39jpa.Roles[ id=" + id + " ]";
+        return "scout39jpa.Usuario[ id=" + id + " ]";
     }
-
+    
 }

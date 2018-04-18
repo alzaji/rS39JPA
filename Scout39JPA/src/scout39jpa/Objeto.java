@@ -7,70 +7,36 @@ package scout39jpa;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 
 /**
  *
  * @author alzaj
  */
 @Entity
-public class Privilegios implements Serializable {
+public class Objeto implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(precision = 1,nullable = false)
-    private boolean lectura;
-    @Column(precision = 1,nullable = false)
-    private boolean escritura;
-    @Column(precision = 1,nullable = false)
-    private boolean borrado;
-    @ManyToMany(mappedBy = "listaPrivilegios")
-    private List<Objeto> listaObjetos;
-    @ManyToOne
-    Roles rol;
+    @ManyToMany
+    private List<Privilegios> listaPrivilegios;
 
-    public Roles getRol() {
-        return rol;
+    public List<Privilegios> getListaPrivilegios() {
+        return listaPrivilegios;
     }
 
-    public void setRol(Roles rol) {
-        this.rol = rol;
+    public void setListaPrivilegios(List<Privilegios> listaPrivilegios) {
+        this.listaPrivilegios = listaPrivilegios;
     }
 
     public Long getId() {
         return id;
-    }
-
-    public boolean isLectura() {
-        return lectura;
-    }
-
-    public void setLectura(boolean lectura) {
-        this.lectura = lectura;
-    }
-
-    public boolean isEscritura() {
-        return escritura;
-    }
-
-    public void setEscritura(boolean escritura) {
-        this.escritura = escritura;
-    }
-
-    public boolean isBorrado() {
-        return borrado;
-    }
-
-    public void setBorrado(boolean borrado) {
-        this.borrado = borrado;
     }
 
     public void setId(Long id) {
@@ -87,10 +53,10 @@ public class Privilegios implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Privilegios)) {
+        if (!(object instanceof Objeto)) {
             return false;
         }
-        Privilegios other = (Privilegios) object;
+        Objeto other = (Objeto) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -99,7 +65,7 @@ public class Privilegios implements Serializable {
 
     @Override
     public String toString() {
-        return "scout39jpa.Privilegios[ id=" + id + " ]";
+        return "scout39jpa.Objeto[ id=" + id + " ]";
     }
     
 }
