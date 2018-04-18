@@ -4,9 +4,10 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>scout39jpa.Usuario</class>
     <class>scout39jpa.Roles</class>
+    <class>scout39jpa.Comentarios</class>
     <class>scout39jpa.Cuotas</class>
     <class>scout39jpa.Archivo</class>
-    <class>scout39jpa.Comentarios</class>
+    <class>scout39jpa.AccesoGrupo</class>
     <class>scout39jpa.Progresion</class>
     <class>scout39jpa.Grupo</class>
     <properties>
