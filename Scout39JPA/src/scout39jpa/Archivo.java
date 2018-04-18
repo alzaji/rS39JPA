@@ -7,10 +7,10 @@ package scout39jpa;
 
 import java.io.Serializable;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -20,22 +20,33 @@ import javax.persistence.Id;
 public class Archivo implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @EmbeddedId
+    private UsuarioArchivoDebil id;
     @Column(nullable = false, length = 5)
     private String tipo;
     @Column(nullable = false, length = 255)
     private String nombre;
     @Column(nullable = false, length = 5000, unique = true)
     private String ruta;
-
+    @ManyToOne
+    private Usuario usuario;
+    @OneToOne
+    private S03 s03;
+    
     public String getTipo() {
         return tipo;
     }
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public S03 getS03() {
+        return s03;
+    }
+
+    public void setS03(S03 s03) {
+        this.s03 = s03;
     }
 
     public String getNombre() {
@@ -54,14 +65,23 @@ public class Archivo implements Serializable {
         this.ruta = ruta;
     }
 
-    public Long getId() {
+    public UsuarioArchivoDebil getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UsuarioArchivoDebil id) {
         this.id = id;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 0;
