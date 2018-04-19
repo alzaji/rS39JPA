@@ -23,6 +23,7 @@ public class AccesoGrupo implements Serializable {
     private Date Fecha_Alta_Grupo;
     @Temporal(TemporalType.DATE)
     private Date Fecha_Baja_Grupo;
+    @ManyToOne
     private Usuario Usuario_Grupo;
     @ManyToOne
     private Grupo grupo;

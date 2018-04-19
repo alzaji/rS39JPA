@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -30,6 +31,8 @@ public class Usuario implements Serializable {
     private String digest;
     @Column(nullable = false, length = 128)
     private String email;
+    @Lob
+    private byte[] avatar;
     @Temporal(TemporalType.DATE)
     @Column(nullable = false)
     private Date fecha_alta;
@@ -41,7 +44,7 @@ public class Usuario implements Serializable {
     private List<Comentarios> comentarios;
     @OneToMany
     private List<Cuotas> cuota;
-    @OneToMany
+    @OneToMany(mappedBy="usuario")
     private List<Archivo> archivo;
     @OneToMany(mappedBy="usuarioP")
     private List<Progresion> progresion;
@@ -150,6 +153,14 @@ public class Usuario implements Serializable {
 
     public void setAcceso_Grupo(List<AccesoGrupo> Acceso_Grupo) {
         this.Acceso_Grupo = Acceso_Grupo;
+    }
+
+    public byte[] getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(byte[] avatar) {
+        this.avatar = avatar;
     }
     
     
