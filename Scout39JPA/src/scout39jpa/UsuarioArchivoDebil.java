@@ -14,31 +14,31 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class UsuarioArchivoDebil {
-    
-    private Usuario idUsuario;
-    private long idArchivo;
-    
-    public Usuario getIdUsuario() {
+
+    private Long idUsuario;
+    private Long idArchivo;
+
+    public Long getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(Usuario idUsuario) {
+    public void setIdUsuario(Long idUsuario) {
         this.idUsuario = idUsuario;
     }
 
-    public long getIdArchivo() {
+    public Long getIdArchivo() {
         return idArchivo;
     }
 
-    public void setIdArchivo(long idArchivo) {
+    public void setIdArchivo(Long idArchivo) {
         this.idArchivo = idArchivo;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 73 * hash + Objects.hashCode(this.idUsuario);
-        hash = 73 * hash + (int) (this.idArchivo ^ (this.idArchivo >>> 32));
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.idUsuario);
+        hash = 97 * hash + Objects.hashCode(this.idArchivo);
         return hash;
     }
 
@@ -54,13 +54,18 @@ public class UsuarioArchivoDebil {
             return false;
         }
         final UsuarioArchivoDebil other = (UsuarioArchivoDebil) obj;
-        if (this.idArchivo != other.idArchivo) {
+        if (!Objects.equals(this.idUsuario, other.idUsuario)) {
             return false;
         }
-        if (!Objects.equals(this.idUsuario, other.idUsuario)) {
+        if (!Objects.equals(this.idArchivo, other.idArchivo)) {
             return false;
         }
         return true;
     }
-    
+
+    @Override
+    public String toString() {
+        return "UsuarioArchivoDebil{" + "idUsuario=" + idUsuario + ", idArchivo=" + idArchivo + '}';
+    }
+
 }

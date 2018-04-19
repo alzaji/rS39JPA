@@ -7,7 +7,6 @@ package scout39jpa;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,9 +36,9 @@ public class Objeto implements Serializable {
     private List<Eventos> listaEventos;
     @OneToMany
     private List<Progresion> listaProgresion;
-    @OneToMany 
+    @OneToMany
     private List<Archivo> listaArchivos;
-    
+
     public Long getId() {
         return id;
     }
@@ -95,7 +94,7 @@ public class Objeto implements Serializable {
     public void setListaArchivos(List<Archivo> listaArchivos) {
         this.listaArchivos = listaArchivos;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -120,5 +119,5 @@ public class Objeto implements Serializable {
     public String toString() {
         return "scout39jpa.Objeto[ id=" + id + " ]";
     }
-    
+
 }

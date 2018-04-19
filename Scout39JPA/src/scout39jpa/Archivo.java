@@ -9,7 +9,9 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
 /**
@@ -28,11 +30,13 @@ public class Archivo implements Serializable {
     private String nombre;
     @Column(nullable = false, length = 5000, unique = true)
     private String ruta;
+    @MapsId("idUsuario")
+    @JoinColumn(name = "idUsuario", referencedColumnName = "id")
     @ManyToOne
     private Usuario usuario;
     @OneToOne
     private S03 s03;
-    
+
     public String getTipo() {
         return tipo;
     }
@@ -81,7 +85,6 @@ public class Archivo implements Serializable {
         this.usuario = usuario;
     }
 
-    
     @Override
     public int hashCode() {
         int hash = 0;
