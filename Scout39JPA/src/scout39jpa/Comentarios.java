@@ -10,8 +10,9 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.MapsId;
 
 
 /**
@@ -26,10 +27,14 @@ public class Comentarios implements Serializable {
     private ComentariosUsuarioEventosDebil idComentarios;
     @Column(nullable = false, length = 500)
     private String cuerpo;
-
+    
+    @MapsId("idUsuario")
+    @JoinColumn(name= "idUsuario", referencedColumnName = "id")
     @ManyToOne
     private Usuario usuario;
     
+    @MapsId("idEvento")
+    @JoinColumn(name= "idEvento", referencedColumnName = "id")        
     @ManyToOne
     private Eventos eventoC;
     

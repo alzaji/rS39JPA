@@ -5,6 +5,7 @@
  */
 package scout39jpa;
 
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Embeddable;
 
@@ -13,11 +14,27 @@ import javax.persistence.Embeddable;
  * @author Dani
  */
 @Embeddable
-public class ComentariosUsuarioEventosDebil {
+public class ComentariosUsuarioEventosDebil implements Serializable{
 
     private Long idComentarios;
-    private Usuario idUsuario;
-    private Eventos idEvento;
+    private Long idUsuario;
+    private Long idEvento;
+        
+    public Long getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Long getIdEvento() {
+        return idEvento;
+    }
+
+    public void setIdEvento(Long idEvento) {
+        this.idEvento = idEvento;
+    }
 
     public Long getIdComentarios() {
         return idComentarios;
@@ -27,21 +44,7 @@ public class ComentariosUsuarioEventosDebil {
         this.idComentarios = idComentarios;
     }
 
-    public Usuario getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Usuario idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public Eventos getIdEvento() {
-        return idEvento;
-    }
-
-    public void setIdEvento(Eventos idEvento) {
-        this.idEvento = idEvento;
-    }
+   
 
     @Override
     public int hashCode() {
