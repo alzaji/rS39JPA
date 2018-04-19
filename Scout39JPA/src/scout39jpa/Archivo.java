@@ -28,7 +28,7 @@ public class Archivo implements Serializable {
     private String tipo;
     @Column(nullable = false, length = 255)
     private String nombre;
-    @Column(nullable = false, length = 5000, unique = true)
+    @Column(nullable = false, length = 3072, unique = true)
     private String ruta;
     @MapsId("idUsuario")
     @JoinColumn(name = "idUsuario", referencedColumnName = "id")
