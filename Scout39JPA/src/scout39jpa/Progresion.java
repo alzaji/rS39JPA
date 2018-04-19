@@ -10,7 +10,9 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 
 
 /**
@@ -33,11 +35,15 @@ public class Progresion implements Serializable {
     private int animacion;
     @Column(length = 500)
     private String promesa;
-    @ManyToOne
-    private Eventos eventoP;
+    @MapsId("idUsuario")
+    @JoinColumn(name = "idUsuario", referencedColumnName = "id")
     @ManyToOne
     private Usuario usuarioP;
-    
+    @MapsId("idEventos")
+    @JoinColumn(name = "idEventos", referencedColumnName = "id")
+    @ManyToOne
+    private Eventos eventoP;
+
 
     public ProgresionUsuarioEventosDebil getIdProgresion() {
         return idProgresion;

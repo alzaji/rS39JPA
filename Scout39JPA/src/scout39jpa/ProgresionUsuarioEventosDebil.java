@@ -15,30 +15,30 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class ProgresionUsuarioEventosDebil {
-    private Usuario id;
-    private Eventos idEventos;
+    private Long idEventos;
+    private Long idUsuario;
 
-    public Usuario getId() {
-        return id;
-    }
-
-    public void setId(Usuario id) {
-        this.id = id;
-    }
-
-    public Eventos getIdEventos() {
+    public Long getIdEventos() {
         return idEventos;
     }
 
-    public void setIdEventos(Eventos idEventos) {
+    public Long getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdEventos(Long idEventos) {
         this.idEventos = idEventos;
+    }
+
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 67 * hash + Objects.hashCode(this.id);
-        hash = 67 * hash + Objects.hashCode(this.idEventos);
+        hash = 17 * hash + Objects.hashCode(this.idEventos);
+        hash = 17 * hash + Objects.hashCode(this.idUsuario);
         return hash;
     }
 
@@ -54,10 +54,10 @@ public class ProgresionUsuarioEventosDebil {
             return false;
         }
         final ProgresionUsuarioEventosDebil other = (ProgresionUsuarioEventosDebil) obj;
-        if (!Objects.equals(this.id, other.id)) {
+        if (!Objects.equals(this.idEventos, other.idEventos)) {
             return false;
         }
-        if (!Objects.equals(this.idEventos, other.idEventos)) {
+        if (!Objects.equals(this.idUsuario, other.idUsuario)) {
             return false;
         }
         return true;
@@ -65,9 +65,10 @@ public class ProgresionUsuarioEventosDebil {
 
     @Override
     public String toString() {
-        return "ProgresionUsuarioEventosDebil{" + "idUusario=" + id + ", idEventos=" + idEventos + '}';
+        return "ProgresionUsuarioEventosDebil{" + "idEventos=" + idEventos + ", idUsuario=" + idUsuario + '}';
     }
 
+    
     
    
     
