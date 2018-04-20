@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,9 +23,9 @@ import javax.persistence.OneToOne;
 @Entity
 public class S03 implements Serializable {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Id
     private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(nullable = false, length = 50)
     private String grupo;
@@ -47,7 +49,9 @@ public class S03 implements Serializable {
     private String localidad;
     private int telefono;
     private int movil;
+    @Temporal(TemporalType.DATE)
     private Date fingreso;
+    @Temporal(TemporalType.DATE)
     private Date fbaja;
     @Column(nullable = false, length = 30)
     private String seccion;
@@ -76,8 +80,8 @@ public class S03 implements Serializable {
     @Column(nullable = false, length = 30)
     private String apellido2ResponsableLegalOtro;
     @OneToOne
-    
-    
+    private Archivo archivo;
+
     public Long getId() {
         return id;
     }
@@ -310,8 +314,8 @@ public class S03 implements Serializable {
         this.apellido2ResponsableLegalOtro = apellido2ResponsableLegalOtro;
     }
 
-    
-    
+
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -336,5 +340,5 @@ public class S03 implements Serializable {
     public String toString() {
         return "scout39jpa.S03[ id=" + id + " ]";
     }
-    
+
 }

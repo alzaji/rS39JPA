@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -28,6 +29,7 @@ public class Grupo implements Serializable {
     private String nombre;
     @Column(nullable = false, length = 200)
     private String despcripcion;
+    @OneToMany(mappedBy = "grupo")
     private List<AccesoGrupo> accesoGrupo;
 
     public Long getId() {
@@ -54,8 +56,8 @@ public class Grupo implements Serializable {
         this.despcripcion = despcripcion;
     }
 
-    
-    
+
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -80,5 +82,5 @@ public class Grupo implements Serializable {
     public String toString() {
         return "scout39jpa.Grupo[ id=" + id + " ]";
     }
-    
+
 }
