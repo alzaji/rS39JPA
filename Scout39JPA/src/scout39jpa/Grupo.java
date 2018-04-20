@@ -6,14 +6,17 @@
 package scout39jpa;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
- * @author hidden-process
+ * @author pasantru
  */
 @Entity
 public class Grupo implements Serializable {
@@ -22,6 +25,12 @@ public class Grupo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(nullable = false, length = 30)
+    private String nombre;
+    @Column(nullable = false, length = 200)
+    private String despcripcion;
+    @OneToMany(mappedBy = "grupo")
+    private List<AccesoGrupo> accesoGrupo;
 
     public Long getId() {
         return id;
@@ -30,6 +39,24 @@ public class Grupo implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDespcripcion() {
+        return despcripcion;
+    }
+
+    public void setDespcripcion(String despcripcion) {
+        this.despcripcion = despcripcion;
+    }
+
+
 
     @Override
     public int hashCode() {
