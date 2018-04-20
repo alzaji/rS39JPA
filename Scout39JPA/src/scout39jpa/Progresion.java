@@ -55,5 +55,5 @@ public class Progresion implements Serializable {
     public String toString() {
         return "scout39jpa.Progresion[ id=" + id + " ]";
     }
-    
+
 }

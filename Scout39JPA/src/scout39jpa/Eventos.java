@@ -13,10 +13,10 @@ import javax.persistence.Id;
 
 /**
  *
- * @author hidden-process
+ * @author aruizdlt
  */
 @Entity
-public class Grupo implements Serializable {
+public class Eventos implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -41,10 +41,10 @@ public class Grupo implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Grupo)) {
+        if (!(object instanceof Eventos)) {
             return false;
         }
-        Grupo other = (Grupo) object;
+        Eventos other = (Eventos) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -53,7 +53,7 @@ public class Grupo implements Serializable {
 
     @Override
     public String toString() {
-        return "scout39jpa.Grupo[ id=" + id + " ]";
+        return "scout39jpa.Eventos[ id=" + id + " ]";
     }
-
+    
 }

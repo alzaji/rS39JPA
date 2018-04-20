@@ -101,5 +101,5 @@ public class Privilegios implements Serializable {
     public String toString() {
         return "scout39jpa.Privilegios[ id=" + id + " ]";
     }
-    
+
 }
