@@ -6,14 +6,16 @@
 package scout39jpa;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
- * @author hidden-process
+ * @author Fernandez
  */
 @Entity
 public class Cuotas implements Serializable {
@@ -22,6 +24,10 @@ public class Cuotas implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(nullable = false, length = 8)
+    private String tipo;
+    @Column(nullable = false)
+    private Long precio;
 
     public Long getId() {
         return id;
@@ -29,6 +35,22 @@ public class Cuotas implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public Long getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Long precio) {
+        this.precio = precio;
     }
 
     @Override
@@ -55,5 +77,5 @@ public class Cuotas implements Serializable {
     public String toString() {
         return "scout39jpa.Cuotas[ id=" + id + " ]";
     }
-    
+
 }
