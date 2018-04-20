@@ -50,7 +50,7 @@ public class Roles implements Serializable {
         this.privilegios = privilegios;
     }
 
-   
+
     public Long getIdrol() {
         return id;
     }
