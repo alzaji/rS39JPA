@@ -6,46 +6,74 @@
 package scout39jpa;
 
 import java.io.Serializable;
+import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+
 
 /**
  *
- * @author hidden-process
+ * @author Dani
  */
 @Entity
 public class Comentarios implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @EmbeddedId
+    private ComentariosUsuarioEventosDebil idComentarios;
+    @Column(nullable = false, length = 500)
+    private String cuerpo;
 
-    public Long getId() {
-        return id;
+    @MapsId("idUsuario")
+    @JoinColumn(name= "idUsuario", referencedColumnName = "id")
+    @ManyToOne
+    private Usuario usuario;
+
+    @MapsId("idEvento")
+    @JoinColumn(name= "idEvento", referencedColumnName = "id")
+    @ManyToOne
+    private Eventos eventoC;
+
+    public String getCuerpo() {
+        return cuerpo;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCuerpo(String cuerpo) {
+        this.cuerpo = cuerpo;
+    }
+
+    public ComentariosUsuarioEventosDebil getIdComentarios() {
+        return idComentarios;
+    }
+
+    public void setIdComentarios(ComentariosUsuarioEventosDebil idComentarios) {
+        this.idComentarios = idComentarios;
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.idComentarios);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Comentarios)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Comentarios other = (Comentarios) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Comentarios other = (Comentarios) obj;
+        if (!Objects.equals(this.idComentarios, other.idComentarios)) {
             return false;
         }
         return true;
@@ -53,7 +81,7 @@ public class Comentarios implements Serializable {
 
     @Override
     public String toString() {
-        return "scout39jpa.Comentarios[ id=" + id + " ]";
+        return "Comentarios{" + "idComentarios=" + idComentarios + '}';
     }
-    
+
 }

@@ -6,14 +6,20 @@
 package scout39jpa;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
- * @author aruizdlt
+ * @author Dani
  */
 @Entity
 public class Eventos implements Serializable {
@@ -22,6 +28,55 @@ public class Eventos implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(nullable = false, length = 128)
+    private String nombre;
+    @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fecha;
+    @Column(nullable = false, length = 512)
+    private String descripcion;
+    @Column(nullable = false, precision = 10, scale = 8)
+    private double latitud;
+    @Column(nullable = false, precision = 11, scale = 8)
+    private double longitud;
+
+    @OneToMany (mappedBy = "eventoC")
+    private List<Comentarios> comentariosE;
+
+    @OneToMany (mappedBy = "eventoP")
+    private List<Progresion> progresionesE;
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
+    }
 
     public Long getId() {
         return id;
@@ -53,7 +108,7 @@ public class Eventos implements Serializable {
 
     @Override
     public String toString() {
-        return "scout39jpa.Eventos[ id=" + id + " ]";
+        return "scout39jpa.eventos[ id=" + id + " ]";
     }
-    
+
 }
