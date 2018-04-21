@@ -24,11 +24,11 @@ public class Archivo implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     private UsuarioArchivoDebil id;
-    @Column(nullable = false, length = 5)
+    @Column(nullable = false, length = 30)
     private String tipo;
-    @Column(nullable = false, length = 255)
+    @Column(nullable = false, unique = true, length = 255)
     private String nombre;
-    @Column(nullable = false, length = 3072, unique = true)
+    @Column(nullable = false, length = 3072)
     private String ruta;
     @MapsId("idUsuario")
     @JoinColumn(name = "idUsuario", referencedColumnName = "id")

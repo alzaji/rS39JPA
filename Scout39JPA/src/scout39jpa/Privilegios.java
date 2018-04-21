@@ -13,7 +13,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 
 /**
  *
@@ -34,8 +33,6 @@ public class Privilegios implements Serializable {
     private Character borrado;
     @ManyToMany(mappedBy = "listaPrivilegios")
     private List<Objeto> listaObjetos;
-    @ManyToOne
-    Roles rol;
 
     public Long getId() {
         return id;
@@ -75,14 +72,6 @@ public class Privilegios implements Serializable {
 
     public void setListaObjetos(List<Objeto> listaObjetos) {
         this.listaObjetos = listaObjetos;
-    }
-
-    public Roles getRol() {
-        return rol;
-    }
-
-    public void setRol(Roles rol) {
-        this.rol = rol;
     }
 
     @Override

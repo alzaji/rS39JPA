@@ -6,12 +6,16 @@
 package scout39jpa;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -26,8 +30,13 @@ public class Cuotas implements Serializable {
     private Long id;
     @Column(nullable = false, length = 8)
     private String tipo;
+    @Column(nullable = false, precision = 3, scale = 2)
+    private BigDecimal precio;
+    @Temporal(TemporalType.DATE)
     @Column(nullable = false)
-    private Long precio;
+    private Date fecha_cuota;
+    @ManyToOne
+    private Usuario usuario;
 
     public Long getId() {
         return id;
@@ -45,12 +54,20 @@ public class Cuotas implements Serializable {
         this.tipo = tipo;
     }
 
-    public Long getPrecio() {
+    public BigDecimal getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Long precio) {
+    public void setPrecio(BigDecimal precio) {
         this.precio = precio;
+    }
+
+    public Date getFecha_cuota() {
+        return fecha_cuota;
+    }
+
+    public void setFecha_cuota(Date fecha_cuota) {
+        this.fecha_cuota = fecha_cuota;
     }
 
     @Override

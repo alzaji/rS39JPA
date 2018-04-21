@@ -42,7 +42,7 @@ public class Usuario implements Serializable {
     private Roles roles;
     @OneToMany(mappedBy = "usuario")
     private List<Comentarios> comentarios;
-    @OneToMany
+    @OneToMany(mappedBy = "usuario")
     private List<Cuotas> cuota;
     @OneToMany(mappedBy = "usuario")
     private List<Archivo> archivo;

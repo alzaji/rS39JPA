@@ -29,7 +29,7 @@ public class Roles implements Serializable {
     private String nombrerol;
     @OneToMany
     private List<Usuario> usuarios;
-    @OneToMany(mappedBy = "rol")
+    @OneToMany
     private List<Privilegios> privilegios;
 
     public List<Usuario> getUsuarios() {

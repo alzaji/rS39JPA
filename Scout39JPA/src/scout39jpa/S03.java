@@ -33,7 +33,7 @@ public class S03 implements Serializable {
     private String nombre;
     @Column(nullable = false, length = 30)
     private String apellido1;
-    @Column(nullable = true, length = 30)
+    @Column(length = 30)
     private String apellido2;
     @Column(nullable = false, length = 9)
     private String dni;
@@ -59,31 +59,27 @@ public class S03 implements Serializable {
     private Date fbaja;
     @Column(nullable = false, length = 30)
     private String seccion;
-    @Column(nullable = true, length = 30)
+    @Column(length = 30)
     private String cargo;
-    @Column(nullable = true)
     private Character federal;
-    @Column(nullable = true)
     private Character asociativo;
-    @Column(nullable = true)
     private Character provincial;
-    @Column(nullable = true)
     private Character grupoAmbito;
-    @Column(nullable = true, length = 30)
+    @Column(length = 30)
     private String nombreResponsableLegal;
-    @Column(nullable = true, length = 30)
+    @Column(length = 30)
     private String apellido1ResponsableLegal;
-    @Column(nullable = true, length = 30)
+    @Column(length = 30)
     private String apellido2ResponsableLegal;
-    @Column(nullable = true, length = 9)
+    @Column(length = 9)
     private String dniResponsableLegal;
-    @Column(nullable = true, length = 30)
+    @Column(length = 30)
     private String nombreResponsableLegalOtro;
-    @Column(nullable = true, length = 30)
+    @Column(length = 30)
     private String apellido1ResponsableLegalOtro;
-    @Column(nullable = true, length = 30)
+    @Column(length = 30)
     private String apellido2ResponsableLegalOtro;
-    @Column(nullable = true, length = 9)
+    @Column(length = 9)
     private String dniResponsableLegal2;
     @OneToOne
     private Archivo archivo;

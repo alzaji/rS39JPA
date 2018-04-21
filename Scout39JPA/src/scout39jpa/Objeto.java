@@ -38,6 +38,8 @@ public class Objeto implements Serializable {
     private List<Progresion> listaProgresion;
     @OneToMany
     private List<Archivo> listaArchivos;
+    @OneToMany
+    private List<Cuotas> listaCuotas;
 
     public Long getId() {
         return id;
@@ -93,6 +95,14 @@ public class Objeto implements Serializable {
 
     public void setListaArchivos(List<Archivo> listaArchivos) {
         this.listaArchivos = listaArchivos;
+    }
+
+    public List<Cuotas> getListaCuotas() {
+        return listaCuotas;
+    }
+
+    public void setListaCuotas(List<Cuotas> listaCuotas) {
+        this.listaCuotas = listaCuotas;
     }
 
     @Override

@@ -25,10 +25,10 @@ public class Grupo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, unique = true, length = 30)
     private String nombre;
-    @Column(nullable = false, length = 200)
-    private String despcripcion;
+    @Column(nullable = false, length = 500)
+    private String descripcion;
     @OneToMany(mappedBy = "grupo")
     private List<AccesoGrupo> accesoGrupo;
 
@@ -48,12 +48,12 @@ public class Grupo implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getDespcripcion() {
-        return despcripcion;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDespcripcion(String despcripcion) {
-        this.despcripcion = despcripcion;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public List<AccesoGrupo> getAccesoGrupo() {

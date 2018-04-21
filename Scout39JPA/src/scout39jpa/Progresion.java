@@ -25,12 +25,9 @@ public class Progresion implements Serializable {
     @EmbeddedId
     private ProgresionUsuarioEventosDebil idProgresion;
 
-    @Column(nullable = true, precision = 3)
-    private int integracion;
-    @Column(nullable = true, precision = 3)
-    private int participacion;
-    @Column(nullable = true, precision = 3)
-    private int animacion;
+    private Integer integracion;
+    private Integer participacion;
+    private Integer animacion;
     @Column(length = 500)
     private String promesa;
     @MapsId("idUsuario")
@@ -50,28 +47,44 @@ public class Progresion implements Serializable {
         this.idProgresion = idProgresion;
     }
 
-    public int getIntegracion() {
+    public Integer getIntegracion() {
         return integracion;
     }
 
-    public void setIntegracion(int integracion) {
+    public void setIntegracion(Integer integracion) {
         this.integracion = integracion;
     }
 
-    public int getParticipacion() {
+    public Integer getParticipacion() {
         return participacion;
     }
 
-    public void setParticipacion(int participacion) {
+    public void setParticipacion(Integer participacion) {
         this.participacion = participacion;
     }
 
-    public int getAnimacion() {
+    public Integer getAnimacion() {
         return animacion;
     }
 
-    public void setAnimacion(int animacion) {
+    public void setAnimacion(Integer animacion) {
         this.animacion = animacion;
+    }
+
+    public Usuario getUsuarioP() {
+        return usuarioP;
+    }
+
+    public void setUsuarioP(Usuario usuarioP) {
+        this.usuarioP = usuarioP;
+    }
+
+    public Eventos getEventoP() {
+        return eventoP;
+    }
+
+    public void setEventoP(Eventos eventoP) {
+        this.eventoP = eventoP;
     }
 
     public String getPromesa() {

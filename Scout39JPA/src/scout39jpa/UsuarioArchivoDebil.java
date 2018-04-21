@@ -5,6 +5,7 @@
  */
 package scout39jpa;
 
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Embeddable;
 
@@ -13,7 +14,7 @@ import javax.persistence.Embeddable;
  * @author aruizdlt
  */
 @Embeddable
-public class UsuarioArchivoDebil {
+public class UsuarioArchivoDebil implements Serializable {
 
     private Long idUsuario;
     private Long idArchivo;

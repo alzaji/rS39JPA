@@ -5,6 +5,7 @@
  */
 package scout39jpa;
 
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Embeddable;
 
@@ -13,7 +14,7 @@ import javax.persistence.Embeddable;
  * @author Fernandez
  */
 @Embeddable
-public class ProgresionUsuarioEventosDebil {
+public class ProgresionUsuarioEventosDebil implements Serializable {
 
     private Long idEventos;
     private Long idUsuario;
