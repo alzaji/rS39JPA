@@ -40,15 +40,15 @@ public class Usuario implements Serializable {
     private Date fecha_baja;
     @ManyToOne
     private Roles roles;
-    @OneToMany(mappedBy="usuario")
+    @OneToMany(mappedBy = "usuario")
     private List<Comentarios> comentarios;
     @OneToMany
     private List<Cuotas> cuota;
-    @OneToMany(mappedBy="usuario")
+    @OneToMany(mappedBy = "usuario")
     private List<Archivo> archivo;
-    @OneToMany(mappedBy="usuarioP")
+    @OneToMany(mappedBy = "usuarioP")
     private List<Progresion> progresion;
-    @OneToMany(mappedBy="Usuario_Grupo")
+    @OneToMany(mappedBy = "Usuario_Grupo")
     private List<AccesoGrupo> Acceso_Grupo;
 
     public String getAlias() {
@@ -162,7 +162,6 @@ public class Usuario implements Serializable {
     public void setAvatar(byte[] avatar) {
         this.avatar = avatar;
     }
-
 
     public Long getId() {
         return id;

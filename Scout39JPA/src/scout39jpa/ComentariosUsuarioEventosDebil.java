@@ -14,12 +14,12 @@ import javax.persistence.Embeddable;
  * @author Dani
  */
 @Embeddable
-public class ComentariosUsuarioEventosDebil implements Serializable{
+public class ComentariosUsuarioEventosDebil implements Serializable {
 
     private Long idComentarios;
     private Long idUsuario;
     private Long idEvento;
-        
+
     public Long getIdUsuario() {
         return idUsuario;
     }
@@ -43,8 +43,6 @@ public class ComentariosUsuarioEventosDebil implements Serializable{
     public void setIdComentarios(Long idComentarios) {
         this.idComentarios = idComentarios;
     }
-
-   
 
     @Override
     public int hashCode() {
@@ -77,6 +75,11 @@ public class ComentariosUsuarioEventosDebil implements Serializable{
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "ComentariosUsuarioEventosDebil{" + "idComentarios=" + idComentarios + ", idUsuario=" + idUsuario + ", idEvento=" + idEvento + '}';
     }
 
 }

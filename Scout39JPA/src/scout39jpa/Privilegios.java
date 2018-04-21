@@ -26,16 +26,56 @@ public class Privilegios implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(precision = 1,nullable = false)
-    private boolean lectura;
-    @Column(precision = 1,nullable = false)
-    private boolean escritura;
-    @Column(precision = 1,nullable = false)
-    private boolean borrado;
+    @Column(nullable = false)
+    private Character lectura;
+    @Column(nullable = false)
+    private Character escritura;
+    @Column(nullable = false)
+    private Character borrado;
     @ManyToMany(mappedBy = "listaPrivilegios")
     private List<Objeto> listaObjetos;
     @ManyToOne
     Roles rol;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Character getLectura() {
+        return lectura;
+    }
+
+    public void setLectura(Character lectura) {
+        this.lectura = lectura;
+    }
+
+    public Character getEscritura() {
+        return escritura;
+    }
+
+    public void setEscritura(Character escritura) {
+        this.escritura = escritura;
+    }
+
+    public Character getBorrado() {
+        return borrado;
+    }
+
+    public void setBorrado(Character borrado) {
+        this.borrado = borrado;
+    }
+
+    public List<Objeto> getListaObjetos() {
+        return listaObjetos;
+    }
+
+    public void setListaObjetos(List<Objeto> listaObjetos) {
+        this.listaObjetos = listaObjetos;
+    }
 
     public Roles getRol() {
         return rol;
@@ -43,38 +83,6 @@ public class Privilegios implements Serializable {
 
     public void setRol(Roles rol) {
         this.rol = rol;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public boolean isLectura() {
-        return lectura;
-    }
-
-    public void setLectura(boolean lectura) {
-        this.lectura = lectura;
-    }
-
-    public boolean isEscritura() {
-        return escritura;
-    }
-
-    public void setEscritura(boolean escritura) {
-        this.escritura = escritura;
-    }
-
-    public boolean isBorrado() {
-        return borrado;
-    }
-
-    public void setBorrado(boolean borrado) {
-        this.borrado = borrado;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     @Override

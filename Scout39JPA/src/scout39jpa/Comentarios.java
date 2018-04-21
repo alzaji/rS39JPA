@@ -14,7 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 
-
 /**
  *
  * @author Dani
@@ -29,12 +28,12 @@ public class Comentarios implements Serializable {
     private String cuerpo;
 
     @MapsId("idUsuario")
-    @JoinColumn(name= "idUsuario", referencedColumnName = "id")
+    @JoinColumn(name = "idUsuario", referencedColumnName = "id")
     @ManyToOne
     private Usuario usuario;
 
     @MapsId("idEvento")
-    @JoinColumn(name= "idEvento", referencedColumnName = "id")
+    @JoinColumn(name = "idEvento", referencedColumnName = "id")
     @ManyToOne
     private Eventos eventoC;
 
@@ -52,6 +51,22 @@ public class Comentarios implements Serializable {
 
     public void setIdComentarios(ComentariosUsuarioEventosDebil idComentarios) {
         this.idComentarios = idComentarios;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Eventos getEventoC() {
+        return eventoC;
+    }
+
+    public void setEventoC(Eventos eventoC) {
+        this.eventoC = eventoC;
     }
 
     @Override

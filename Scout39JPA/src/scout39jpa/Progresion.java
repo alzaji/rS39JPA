@@ -14,12 +14,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 
-
 /**
  *
  * @author Fernandez
  */
-
 @Entity
 public class Progresion implements Serializable {
 
@@ -43,7 +41,6 @@ public class Progresion implements Serializable {
     @JoinColumn(name = "idEventos", referencedColumnName = "id")
     @ManyToOne
     private Eventos eventoP;
-
 
     public ProgresionUsuarioEventosDebil getIdProgresion() {
         return idProgresion;
@@ -114,9 +111,5 @@ public class Progresion implements Serializable {
     public String toString() {
         return "Progresion{" + "idProgresion=" + idProgresion + '}';
     }
-
-
-
-
 
 }

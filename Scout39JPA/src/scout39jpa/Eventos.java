@@ -6,6 +6,7 @@
 package scout39jpa;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
@@ -36,14 +37,14 @@ public class Eventos implements Serializable {
     @Column(nullable = false, length = 512)
     private String descripcion;
     @Column(nullable = false, precision = 10, scale = 8)
-    private double latitud;
+    private BigDecimal latitud;
     @Column(nullable = false, precision = 11, scale = 8)
-    private double longitud;
+    private BigDecimal longitud;
 
-    @OneToMany (mappedBy = "eventoC")
+    @OneToMany(mappedBy = "eventoC")
     private List<Comentarios> comentariosE;
 
-    @OneToMany (mappedBy = "eventoP")
+    @OneToMany(mappedBy = "eventoP")
     private List<Progresion> progresionesE;
 
     public Date getFecha() {
@@ -62,19 +63,19 @@ public class Eventos implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public double getLatitud() {
+    public BigDecimal getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(double latitud) {
+    public void setLatitud(BigDecimal latitud) {
         this.latitud = latitud;
     }
 
-    public double getLongitud() {
+    public BigDecimal getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(double longitud) {
+    public void setLongitud(BigDecimal longitud) {
         this.longitud = longitud;
     }
 
@@ -84,6 +85,30 @@ public class Eventos implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public List<Comentarios> getComentariosE() {
+        return comentariosE;
+    }
+
+    public void setComentariosE(List<Comentarios> comentariosE) {
+        this.comentariosE = comentariosE;
+    }
+
+    public List<Progresion> getProgresionesE() {
+        return progresionesE;
+    }
+
+    public void setProgresionesE(List<Progresion> progresionesE) {
+        this.progresionesE = progresionesE;
     }
 
     @Override

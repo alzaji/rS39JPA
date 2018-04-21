@@ -59,8 +59,6 @@ public class AccesoGrupo implements Serializable {
     public void setGrupo(Grupo grupo) {
         this.grupo = grupo;
     }
-    
-    
 
     public Long getId() {
         return id;
@@ -94,5 +92,5 @@ public class AccesoGrupo implements Serializable {
     public String toString() {
         return "scout39jpa.AccesoGrupo[ id=" + id + " ]";
     }
-    
+
 }

@@ -56,7 +56,13 @@ public class Grupo implements Serializable {
         this.despcripcion = despcripcion;
     }
 
+    public List<AccesoGrupo> getAccesoGrupo() {
+        return accesoGrupo;
+    }
 
+    public void setAccesoGrupo(List<AccesoGrupo> accesoGrupo) {
+        this.accesoGrupo = accesoGrupo;
+    }
 
     @Override
     public int hashCode() {

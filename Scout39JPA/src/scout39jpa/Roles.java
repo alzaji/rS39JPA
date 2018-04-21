@@ -7,13 +7,11 @@ package scout39jpa;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 /**
@@ -49,7 +47,6 @@ public class Roles implements Serializable {
     public void setPrivilegios(List<Privilegios> privilegios) {
         this.privilegios = privilegios;
     }
-
 
     public Long getIdrol() {
         return id;

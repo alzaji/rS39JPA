@@ -12,9 +12,9 @@ import javax.persistence.Embeddable;
  *
  * @author Fernandez
  */
-
 @Embeddable
 public class ProgresionUsuarioEventosDebil {
+
     private Long idEventos;
     private Long idUsuario;
 
@@ -68,9 +68,4 @@ public class ProgresionUsuarioEventosDebil {
         return "ProgresionUsuarioEventosDebil{" + "idEventos=" + idEventos + ", idUsuario=" + idUsuario + '}';
     }
 
-    
-    
-   
-    
-    
 }

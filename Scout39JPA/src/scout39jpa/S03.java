@@ -33,53 +33,58 @@ public class S03 implements Serializable {
     private String nombre;
     @Column(nullable = false, length = 30)
     private String apellido1;
-    @Column(nullable = false, length = 30)
+    @Column(nullable = true, length = 30)
     private String apellido2;
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 9)
     private String dni;
-    @TemporalType(TemporalType.DATE)
+    @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date fnacimiento;
-    //1 para M y 0 para F
-    private boolean sexo;
+    //M o F
+    @Column(nullable = false)
+    private Character sexo;
     @Column(nullable = false, length = 100)
     private String calleynumero;
-    private int codPostal;
+    @Column(nullable = false)
+    private Integer codPostal;
     @Column(nullable = false, length = 50)
     private String provincia;
     @Column(nullable = false, length = 50)
     private String localidad;
-    private int telefono;
-    private int movil;
+    private Integer telefono;
+    private Integer movil;
     @Temporal(TemporalType.DATE)
     private Date fingreso;
     @Temporal(TemporalType.DATE)
     private Date fbaja;
     @Column(nullable = false, length = 30)
     private String seccion;
-    @Column(nullable = false, length = 30)
+    @Column(nullable = true, length = 30)
     private String cargo;
-    @Column(nullable = false, length = 30)
-    private String ambito;
-    @Column(nullable = false, length = 30)
-    private String federal;
-    @Column(nullable = false, length = 30)
-    private String asociativo;
-    @Column(nullable = false, length = 30)
-    private String provincial;
-    @Column(nullable = false, length = 30)
-    private String grupoAmbito;
-    @Column(nullable = false, length = 30)
+    @Column(nullable = true)
+    private Character federal;
+    @Column(nullable = true)
+    private Character asociativo;
+    @Column(nullable = true)
+    private Character provincial;
+    @Column(nullable = true)
+    private Character grupoAmbito;
+    @Column(nullable = true, length = 30)
     private String nombreResponsableLegal;
-    @Column(nullable = false, length = 30)
+    @Column(nullable = true, length = 30)
     private String apellido1ResponsableLegal;
-    @Column(nullable = false, length = 30)
+    @Column(nullable = true, length = 30)
     private String apellido2ResponsableLegal;
-    @Column(nullable = false, length = 30)
+    @Column(nullable = true, length = 9)
+    private String dniResponsableLegal;
+    @Column(nullable = true, length = 30)
     private String nombreResponsableLegalOtro;
-    @Column(nullable = false, length = 30)
+    @Column(nullable = true, length = 30)
     private String apellido1ResponsableLegalOtro;
-    @Column(nullable = false, length = 30)
+    @Column(nullable = true, length = 30)
     private String apellido2ResponsableLegalOtro;
+    @Column(nullable = true, length = 9)
+    private String dniResponsableLegal2;
     @OneToOne
     private Archivo archivo;
 
@@ -139,11 +144,11 @@ public class S03 implements Serializable {
         this.fnacimiento = fnacimiento;
     }
 
-    public boolean isSexo() {
+    public Character getSexo() {
         return sexo;
     }
 
-    public void setSexo(boolean sexo) {
+    public void setSexo(Character sexo) {
         this.sexo = sexo;
     }
 
@@ -155,11 +160,11 @@ public class S03 implements Serializable {
         this.calleynumero = calleynumero;
     }
 
-    public int getCodPostal() {
+    public Integer getCodPostal() {
         return codPostal;
     }
 
-    public void setCodPostal(int codPostal) {
+    public void setCodPostal(Integer codPostal) {
         this.codPostal = codPostal;
     }
 
@@ -179,19 +184,19 @@ public class S03 implements Serializable {
         this.localidad = localidad;
     }
 
-    public int getTelefono() {
+    public Integer getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(Integer telefono) {
         this.telefono = telefono;
     }
 
-    public int getMovil() {
+    public Integer getMovil() {
         return movil;
     }
 
-    public void setMovil(int movil) {
+    public void setMovil(Integer movil) {
         this.movil = movil;
     }
 
@@ -227,43 +232,35 @@ public class S03 implements Serializable {
         this.cargo = cargo;
     }
 
-    public String getAmbito() {
-        return ambito;
-    }
-
-    public void setAmbito(String ambito) {
-        this.ambito = ambito;
-    }
-
-    public String getFederal() {
+    public Character getFederal() {
         return federal;
     }
 
-    public void setFederal(String federal) {
+    public void setFederal(Character federal) {
         this.federal = federal;
     }
 
-    public String getAsociativo() {
+    public Character getAsociativo() {
         return asociativo;
     }
 
-    public void setAsociativo(String asociativo) {
+    public void setAsociativo(Character asociativo) {
         this.asociativo = asociativo;
     }
 
-    public String getProvincial() {
+    public Character getProvincial() {
         return provincial;
     }
 
-    public void setProvincial(String provincial) {
+    public void setProvincial(Character provincial) {
         this.provincial = provincial;
     }
 
-    public String getGrupoAmbito() {
+    public Character getGrupoAmbito() {
         return grupoAmbito;
     }
 
-    public void setGrupoAmbito(String grupoAmbito) {
+    public void setGrupoAmbito(Character grupoAmbito) {
         this.grupoAmbito = grupoAmbito;
     }
 
@@ -291,6 +288,14 @@ public class S03 implements Serializable {
         this.apellido2ResponsableLegal = apellido2ResponsableLegal;
     }
 
+    public String getDniResponsableLegal() {
+        return dniResponsableLegal;
+    }
+
+    public void setDniResponsableLegal(String dniResponsableLegal) {
+        this.dniResponsableLegal = dniResponsableLegal;
+    }
+
     public String getNombreResponsableLegalOtro() {
         return nombreResponsableLegalOtro;
     }
@@ -315,7 +320,21 @@ public class S03 implements Serializable {
         this.apellido2ResponsableLegalOtro = apellido2ResponsableLegalOtro;
     }
 
+    public String getDniResponsableLegal2() {
+        return dniResponsableLegal2;
+    }
 
+    public void setDniResponsableLegal2(String dniResponsableLegal2) {
+        this.dniResponsableLegal2 = dniResponsableLegal2;
+    }
+
+    public Archivo getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(Archivo archivo) {
+        this.archivo = archivo;
+    }
 
     @Override
     public int hashCode() {
