@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package scout39jpa;
+package org.siliconvalley.scout39.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
@@ -29,7 +30,7 @@ public class S03 implements Serializable {
     private Long id;
     @Column(nullable = false, length = 50)
     private String grupo;
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 100)
     private String nombre;
     @Column(nullable = false, length = 30)
     private String apellido1;
@@ -81,7 +82,7 @@ public class S03 implements Serializable {
     private String apellido2ResponsableLegalOtro;
     @Column(length = 9)
     private String dniResponsableLegal2;
-    @OneToOne
+    @OneToOne 
     private Archivo archivo;
 
     public Long getId() {

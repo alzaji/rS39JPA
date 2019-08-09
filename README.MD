@@ -13,8 +13,7 @@
 
 * Scout39/ -> Carpeta del proyecto JavaSE para NetBeans
 * resources/
-  * scout39.ddl -> script DDL con la estructura SQL para despliegue en BD real
-  * Scout39ER.html -> Modelo E/R en formato HTML/SVG
+  * Scout39.svg -> Modelo E/R en formato SVG
 
 ### Instrucciones:
 
@@ -27,4 +26,4 @@
 
 ## Modelo E/R
 
-![Modelo ER](http://phab.alzaji.xyz/stuff/Scout39.svg)
+![Modelo ER](https://www.alzaji.xyz/stuff/Scout39.svg)

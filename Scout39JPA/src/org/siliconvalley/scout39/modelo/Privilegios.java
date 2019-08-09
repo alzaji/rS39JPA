@@ -3,16 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package scout39jpa;
+package org.siliconvalley.scout39.modelo;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -26,13 +28,17 @@ public class Privilegios implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(nullable = false)
-    private Character lectura;
+    private Character crear;
     @Column(nullable = false)
-    private Character escritura;
+    private Character leer;
     @Column(nullable = false)
-    private Character borrado;
-    @ManyToMany(mappedBy = "listaPrivilegios")
-    private List<Objeto> listaObjetos;
+    private Character modificar;
+    @Column(nullable = false)
+    private Character borrar;
+    @OneToMany(mappedBy = "idPrivilegio", cascade = CascadeType.ALL)
+    private List<AccesoRecurso> accesorec;
+    @ManyToMany(mappedBy = "privilegios", cascade = CascadeType.ALL)
+    private List<Roles> listaRoles;
 
     public Long getId() {
         return id;
@@ -42,36 +48,52 @@ public class Privilegios implements Serializable {
         this.id = id;
     }
 
-    public Character getLectura() {
-        return lectura;
+    public Character getCrear() {
+        return crear;
     }
 
-    public void setLectura(Character lectura) {
-        this.lectura = lectura;
+    public void setCrear(Character crear) {
+        this.crear = crear;
     }
 
-    public Character getEscritura() {
-        return escritura;
+    public Character getLeer() {
+        return leer;
     }
 
-    public void setEscritura(Character escritura) {
-        this.escritura = escritura;
+    public void setLeer(Character leer) {
+        this.leer = leer;
     }
 
-    public Character getBorrado() {
-        return borrado;
+    public Character getModificar() {
+        return modificar;
     }
 
-    public void setBorrado(Character borrado) {
-        this.borrado = borrado;
+    public void setModificar(Character modificar) {
+        this.modificar = modificar;
     }
 
-    public List<Objeto> getListaObjetos() {
-        return listaObjetos;
+    public Character getBorrar() {
+        return borrar;
     }
 
-    public void setListaObjetos(List<Objeto> listaObjetos) {
-        this.listaObjetos = listaObjetos;
+    public void setBorrar(Character borrar) {
+        this.borrar = borrar;
+    }
+
+    public List<AccesoRecurso> getAccesorec() {
+        return accesorec;
+    }
+
+    public void setAccesorec(List<AccesoRecurso> accesorec) {
+        this.accesorec = accesorec;
+    }
+
+    public List<Roles> getListaRoles() {
+        return listaRoles;
+    }
+
+    public void setListaRoles(List<Roles> listaRoles) {
+        this.listaRoles = listaRoles;
     }
 
     @Override

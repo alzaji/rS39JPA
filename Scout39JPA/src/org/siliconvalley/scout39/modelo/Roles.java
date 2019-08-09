@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package scout39jpa;
+package org.siliconvalley.scout39.modelo;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,10 +29,28 @@ public class Roles implements Serializable {
     private Long id;
     @Column(unique = true, length = 100, nullable = false)
     private String nombrerol;
-    @OneToMany
+    @OneToMany (cascade = CascadeType.ALL)
     private List<Usuario> usuarios;
-    @ManyToMany
+    @ManyToMany 
     private List<Privilegios> privilegios;
+    @OneToMany(mappedBy = "idRol", cascade = CascadeType.ALL)
+    private List<AccesoRecurso> recursos;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombrerol() {
+        return nombrerol;
+    }
+
+    public void setNombrerol(String nombrerol) {
+        this.nombrerol = nombrerol;
+    }
 
     public List<Usuario> getUsuarios() {
         return usuarios;
@@ -49,29 +68,15 @@ public class Roles implements Serializable {
         this.privilegios = privilegios;
     }
 
-    public Long getIdrol() {
-        return id;
+    public List<AccesoRecurso> getRecursos() {
+        return recursos;
     }
 
-    public void setIdrol(Long idrol) {
-        this.id = idrol;
+    public void setRecursos(List<AccesoRecurso> recursos) {
+        this.recursos = recursos;
     }
 
-    public String getNombrerol() {
-        return nombrerol;
-    }
 
-    public void setNombrerol(String nombrerol) {
-        this.nombrerol = nombrerol;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     @Override
     public int hashCode() {

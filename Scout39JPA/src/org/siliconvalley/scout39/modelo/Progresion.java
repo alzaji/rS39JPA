@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package scout39jpa;
+package org.siliconvalley.scout39.modelo;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -28,8 +28,6 @@ public class Progresion implements Serializable {
     private Integer integracion;
     private Integer participacion;
     private Integer animacion;
-    @Column(length = 500)
-    private String promesa;
     @MapsId("idUsuario")
     @JoinColumn(name = "idUsuario", referencedColumnName = "id")
     @ManyToOne
@@ -38,6 +36,10 @@ public class Progresion implements Serializable {
     @JoinColumn(name = "idEventos", referencedColumnName = "id")
     @ManyToOne
     private Eventos eventoP;
+
+    public Progresion() {
+        this.idProgresion = new ProgresionUsuarioEventosDebil(); // Único workaround valido para la solucion a setter/getter de ids
+    }
 
     public ProgresionUsuarioEventosDebil getIdProgresion() {
         return idProgresion;
@@ -85,14 +87,6 @@ public class Progresion implements Serializable {
 
     public void setEventoP(Eventos eventoP) {
         this.eventoP = eventoP;
-    }
-
-    public String getPromesa() {
-        return promesa;
-    }
-
-    public void setPromesa(String promesa) {
-        this.promesa = promesa;
     }
 
     @Override

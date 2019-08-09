@@ -3,40 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package scout39jpa;
+package org.siliconvalley.scout39.modelo;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.OneToMany;
 
 /**
  *
- * @author Fernandez
+ * @author pasantru
  */
 @Entity
-public class Cuotas implements Serializable {
+public class Grupo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable = false, length = 8)
-    private String tipo;
-    @Column(nullable = false, precision = 3, scale = 2)
-    private BigDecimal precio;
-    @Temporal(TemporalType.DATE)
-    @Column(nullable = false)
-    private Date fecha_cuota;
-    @ManyToOne
-    private Usuario usuario;
+    @Column(nullable = false, unique = true, length = 30)
+    private String nombre;
+    @Column(nullable = false, length = 500)
+    private String descripcion;
+    @OneToMany(mappedBy = "grupo")
+    private List<AccesoGrupo> accesoGrupo;
 
     public Long getId() {
         return id;
@@ -46,28 +40,28 @@ public class Cuotas implements Serializable {
         this.id = id;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public BigDecimal getPrecio() {
-        return precio;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setPrecio(BigDecimal precio) {
-        this.precio = precio;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public Date getFecha_cuota() {
-        return fecha_cuota;
+    public List<AccesoGrupo> getAccesoGrupo() {
+        return accesoGrupo;
     }
 
-    public void setFecha_cuota(Date fecha_cuota) {
-        this.fecha_cuota = fecha_cuota;
+    public void setAccesoGrupo(List<AccesoGrupo> accesoGrupo) {
+        this.accesoGrupo = accesoGrupo;
     }
 
     @Override
@@ -80,10 +74,10 @@ public class Cuotas implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cuotas)) {
+        if (!(object instanceof Grupo)) {
             return false;
         }
-        Cuotas other = (Cuotas) object;
+        Grupo other = (Grupo) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -92,7 +86,7 @@ public class Cuotas implements Serializable {
 
     @Override
     public String toString() {
-        return "scout39jpa.Cuotas[ id=" + id + " ]";
+        return "scout39jpa.Grupo[ id=" + id + " ]";
     }
 
 }
